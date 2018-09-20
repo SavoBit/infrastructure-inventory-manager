@@ -89,3 +89,71 @@ CREATE TABLE `lte` (
 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
 ;
 ```
+
+# Interfaces
+
+There is one main interface used to receive the topology information. This is a JSON interface and uses exactly the same data model available in the information model. To see an example of the JSON just see the documentation of the senders. 
+
+
+# Usage
+
+- ./start.sh -i -> To show all the interfaces available in the system and identify their IDs
+- ./start.sh -i 5 -> To start the FMA listening trafic on interface with ID 5
+- ./start.sh -f filename.pcap -> to start the FMA from pcap file
+- ./start.sh -z eth0 -> to start the FMA from pcap file
+
+# Configuration File (config.ini)
+-------------------------------------
+The key value is the "NOTIFICATION METHOD" > "screen" only shown on screen. "rabbitmq" publsih it in RabbitMQ and "kafka" publish it on KAFKA. See the config.xml example available in the root folder where you can find a complete information for the meaning of all the configuration parameters of the tool. 
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>IIM Configuration</comment>
+
+<entry key="DB_URL">jdbc:mysql://10.10.0.11/topology</entry>
+<entry key="DB_USER">root</entry>
+<entry key="DB_PASS">password</entry>
+<entry key="DB_DRIVER">com.mysql.jdbc.Driver</entry>
+
+<entry key="NUMBER_OF_SUBSCRIPTIONS">1</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_VHOST">selfnet</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_IP">10.10.0.11</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_USER">selfnet</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_PASS">selfnet</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_PORT">5672</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_EXCHAGE_TYPE">topic</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_EXCHAGE_NAME">topology_events</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_QUEUE_NAME">iim</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_ROUTING_KEY">topology_events</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_QUEUE_HANDLER">org.uws.iim.logic.VirtualInfrastructureHandler</entry>
+
+<entry key="DEBUG">false</entry>
+</properties>
+```
+
+# Dependencies
+It requires JDK 1.8 and the following libraries: (distributed for convenience)
+- MySQL
+
+# License
+## Authors
+5G Flow Monitoring Agent. Copyright (C) 2016-2018 Jose M. Alcaraz Calero, Enrique Chirivella Perez, Qi wang. University of the West of Scotland
+  
+## License
+Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  
+# Acknowledge
+Software Supported by H2020 5G-PPP SELFNET PROJECT with project ID H2020-ICT-2014-2;
+
+
+
