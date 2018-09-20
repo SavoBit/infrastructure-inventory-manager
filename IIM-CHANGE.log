@@ -1,0 +1,21 @@
+
+
+Well Known Limitations
+----------------------
+- The topology does not update correctly when there is a dynamic de-attachement of interfaces over both running and
+stop VMs onces they have been created.
+- When a Network Update comes and it has two ifaces in the same network id, it updated the entry in the DB rather than
+ inserting two entries.
+
+Version 1.2
+- Added reportedTime in all the DAO objects in the DB
+- Change InstanceId by UUID in VM Networks in order to following the jumps across data model
+- When a Network Update is received, now all the networks are detected and the new ones are inserted (to avoid cache incoherences)
+
+Version 1.1
+- Fixed the problem why all the PM where always inserted rather than updated.
+- Added a cleaning mechanisms at start to delete the tables from the MySQL
+- Fixed LTE DAO inconsistence with the DB data model
+
+Version 1.0
+- Initial Release

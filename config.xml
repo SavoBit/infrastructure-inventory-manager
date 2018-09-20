@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>IIM Configuration</comment>
+
+<entry key="DB_URL">jdbc:mysql://10.10.0.11/topology</entry>
+<entry key="DB_USER">root</entry>
+<entry key="DB_PASS">password</entry>
+<entry key="DB_DRIVER">com.mysql.jdbc.Driver</entry>
+
+<entry key="NUMBER_OF_SUBSCRIPTIONS">1</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_VHOST">selfnet</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_IP">10.10.0.11</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_USER">selfnet</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_PASS">selfnet</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_PORT">5672</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_EXCHAGE_TYPE">topic</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_EXCHAGE_NAME">topology_events</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_QUEUE_NAME">iim</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_ROUTING_KEY">topology_events</entry>
+<entry key="SUBSCRIPTION_0_RABBITMQ_QUEUE_HANDLER">org.uws.iim.logic.VirtualInfrastructureHandler</entry>
+
+<entry key="DEBUG">false</entry>
+</properties>
